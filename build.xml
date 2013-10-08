@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="docx4j-MOXy-JAXBContext">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+	<property name="dist" value="./dist"/>
+	
+	<property name="version" value="3.0.0-SNAPSHOT"/>
+
+    <property name="src.main.java.dir" value="src/main/java"/>
+	
+	<property name="m2Repository" value="../../../.m2/repository"/>	
+
+ 
+    
+    <target name="oneoff-create-tree" >
+
+		<mkdir dir="src/main/java/org/docx4j/bibliography"/>
+		<mkdir dir="src/main/java/org/docx4j/convert/in/word2003xml"/>
+		<mkdir dir="src/main/java/org/docx4j/customxml"/>
+		<mkdir dir="src/main/java/org/docx4j/customXmlProperties"/>
+		<mkdir dir="src/main/java/org/docx4j/dml"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/chart"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/chartDrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/compatibility"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/diagram"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/diagram2008"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/lockedCanvas"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/picture"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/spreadsheetdrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/dml/wordprocessingDrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/core"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/core/dc/elements"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/core/dc/terms"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/custom"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/extended"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/coverPageProps"/>
+		<mkdir dir="src/main/java/org/docx4j/docProps/variantTypes"/>
+		<mkdir dir="src/main/java/org/docx4j/fonts/microsoft"/>
+		<mkdir dir="src/main/java/org/docx4j/fonts/substitutions"/>
+		<mkdir dir="src/main/java/org/docx4j/math"/>
+		<mkdir dir="src/main/java/org/docx4j/model/structure/jaxb"/>
+		<mkdir dir="src/main/java/org/docx4j/openpackaging/contenttype"/>
+		<mkdir dir="src/main/java/org/docx4j/relationships"/>
+		<mkdir dir="src/main/java/org/docx4j/sharedtypes"/>
+		<mkdir dir="src/main/java/org/docx4j/vml"/>
+		<mkdir dir="src/main/java/org/docx4j/vml/officedrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/vml/presentationDrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/vml/root"/>
+		<mkdir dir="src/main/java/org/docx4j/vml/spreadsheetDrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/vml/wordprocessingDrawing"/>
+		<mkdir dir="src/main/java/org/docx4j/wml"/>
+		<mkdir dir="src/main/java/org/docx4j/w14"/>
+		<mkdir dir="src/main/java/org/docx4j/w15"/>
+		<mkdir dir="src/main/java/org/docx4j/xmlPackage"/>
+		<mkdir dir="src/main/java/org/opendope/components"/>
+		<mkdir dir="src/main/java/org/opendope/conditions"/>
+		<mkdir dir="src/main/java/org/opendope/questions"/>
+		<mkdir dir="src/main/java/org/opendope/SmartArt/dataHierarchy"/>
+		<mkdir dir="src/main/java/org/opendope/xpaths"/>
+		<mkdir dir="src/main/java/org/opendope/answers"/>
+		<!--  the following can go in the same source tree -->
+		<mkdir dir="src/main/java/org/pptx4j/pml"/>
+		<mkdir dir="src/main/java/org/xlsx4j/sml"/>
+
+    
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/bibliography/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/convert/in/word2003xml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/customxml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/customXmlProperties/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/chart/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/chartDrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/compatibility/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/diagram/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/diagram2008/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/lockedCanvas/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/picture/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/spreadsheetdrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/dml/wordprocessingDrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/core/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/core/dc/elements/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/core/dc/terms/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/custom/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/extended/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/coverPageProps/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/docProps/variantTypes/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/fonts/microsoft/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/fonts/substitutions/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/math/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/model/structure/jaxb/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/openpackaging/contenttype/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/relationships/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/sharedtypes/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/officedrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/presentationDrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/root/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/spreadsheetDrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/vml/wordprocessingDrawing/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/wml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/w14/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/w15/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/xmlPackage/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/components/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/conditions/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/questions/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/SmartArt/dataHierarchy/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/xpaths/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/opendope/answers/jaxb.properties"/>
+		<!--  the following can go in the same source tree -->
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/pptx4j/pml/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/xlsx4j/sml/jaxb.properties"/>
+    
+
+    
+    </target>	
+
+	
+   
+</project>

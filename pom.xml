@@ -7,9 +7,10 @@
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
+  
 	<groupId>org.docx4j</groupId>
 	<artifactId>docx4j-MOXy-JAXBContext</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>docx4j-MOXy-JAXBContext</name>
 	<description>
@@ -53,9 +54,126 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<!-- The objective is to generate a jar which is compatible with Java
+						1.5, whilst at the same time allowing @Override annotations in the source
+						code on methods which merely implement an interface (Java 6 allows this,
+						but 1.5 gives an error). When I played around with this, I found that both
+						maven and ant would happily compile to target 1.5 with the pesky @Override
+						annotations present (irrespective of whether source was set to 1.5 or 1.6).
+						You are not allowed source=1.6, target=1.5; this results in: Failure executing
+						javac, but could not parse the error javac: source release 1.6 requires target
+						release 1.6 So we need source=1.5, target=1.5 The downside is that m2eclipse
+						mirrors this in Eclipse's compiler settings, and Eclipse then complains about
+						the @Override annotations :-( So you must manually change the Eclipse compiler
+						setting back to 1.6. -->
+					<source>1.5</source>
+					<target>1.5</target>
+
+					<verbose>false</verbose>
+					<!-- maxmemory>512m</maxmemory On Linux, use: MAVEN_OPTS="-Xmx512m" mvn install -->
+					<!-- try to help maven to find package com.sun.xml.internal.bind.marshaller:
+						<bootclasspath>${java.home}/lib/rt.jar</bootclasspath> but this doesn't help -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<!-- The Source Plugin creates a jar archive of the source files of the
+					current project. -->
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- maven-javadoc-plugin seems to require large -Xmx so comment this
+				out if your build is failing because you don't have enough. -->
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<maxmemory>512m</maxmemory>
+					<!-- 18 MB without the exclusion; still 15MB with -->
+					<!-- <excludePackageNames>org.plutext.jaxb.svg11:org.plutext.jaxb.xslfo</excludePackageNames> -->
+				 </configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.soebes.maven.plugins</groupId>
+				<artifactId>maven-echo-plugin</artifactId>
+				<version>0.1</version>
+				<executions>
+					<execution>
+						<id>install-echo</id>
+						<phase>install</phase>
+						<goals>
+							<goal>echo</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>deploy-echo</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>echo</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<echos>
+						<echo>+-------------------------------------------------------+</echo>
+						<echo>!       Join the docx4j developers mailing list by      !</echo>
+						<echo>!       emailing docx4j-dev-subscribe@docx4java.org     !</echo>
+						<echo>+-------------------------------------------------------+</echo>
+					</echos>
+				</configuration>
+			</plugin>
 		</plugins>
+    	<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>build-helper-maven-plugin</artifactId>
+										<versionRange>[1.3,2.0)</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>

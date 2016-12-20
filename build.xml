@@ -7,7 +7,7 @@
     <property name="source" value="1.5"/>
 	<property name="dist" value="./dist"/>
 	
-	<property name="version" value="3.3.0"/>
+	<property name="version" value="3.3.2"/>
 
     <property name="src.main.java.dir" value="src/main/java"/>
 	
@@ -41,6 +41,16 @@
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/com/plutext/org/etsi/uri/x01903/v141/jaxb.properties"/>
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/com/plutext/org/openxmlformats/schemas/xpackage/x2006/digitalSignature/jaxb.properties"/>		
 
+    </target>
+
+    <target name="oneoff-create-tree-docx4j332-additions" > <!-- docx4j v3.3.2 additions -->
+    
+		<mkdir dir="src/main/java/org/docx4j/com/microsoft/schemas/office/webextensions/taskpanes_2010_11"/>
+		<mkdir dir="src/main/java/org/docx4j/com/microsoft/schemas/office/webextensions/webextension_2010_11"/>
+
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/com/microsoft/schemas/office/webextensions/taskpanes_2010_11/jaxb.properties"/>
+		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/com/microsoft/schemas/office/webextensions/webextension_2010_11/jaxb.properties"/>
+   
     </target>
     
     <target name="oneoff-create-tree" >
@@ -92,7 +102,6 @@
 		<!--  the following can go in the same source tree -->
 		<mkdir dir="src/main/java/org/pptx4j/pml"/>
 		<mkdir dir="src/main/java/org/xlsx4j/sml"/>
-
     
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/bibliography/jaxb.properties"/>
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/docx4j/convert/in/word2003xml/jaxb.properties"/>
@@ -141,8 +150,6 @@
 		<!--  the following can go in the same source tree -->
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/pptx4j/pml/jaxb.properties"/>
 		<copy file="jaxb.properties.MOXy" tofile="src/main/java/org/xlsx4j/sml/jaxb.properties"/>
-    
-
     
     </target>	
 

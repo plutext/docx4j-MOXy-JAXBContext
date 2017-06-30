@@ -7,11 +7,15 @@
     <property name="source" value="1.5"/>
 	<property name="dist" value="./dist"/>
 	
-	<property name="version" value="3.3.2"/>
+	<property name="version" value="3.3.5"/>
 
     <property name="src.main.java.dir" value="src/main/java"/>
 	
 	<property name="m2Repository" value="../../../.m2/repository"/>	
+	
+	<target name="build" >
+		<echo message="To build this project, please use maven instead"/>
+	</target>
 
     <target name="oneoff-create-tree-docx4j330-additions" > <!-- docx4j v3.3.0 additions -->
     
@@ -53,6 +57,8 @@
    
     </target>
     
+	<!-- docx4j v3.3.5 additions of w15symex, w16cid were done manually -->
+	
     <target name="oneoff-create-tree" >
 
 		<mkdir dir="src/main/java/org/docx4j/bibliography"/>

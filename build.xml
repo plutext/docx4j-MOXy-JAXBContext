@@ -7,7 +7,7 @@
     <property name="source" value="1.5"/>
 	<property name="dist" value="./dist"/>
 	
-	<property name="version" value="3.3.5"/>
+	<property name="version" value="3.3.6"/>
 
     <property name="src.main.java.dir" value="src/main/java"/>
 	
@@ -58,6 +58,7 @@
     </target>
     
 	<!-- docx4j v3.3.5 additions of w15symex, w16cid were done manually -->
+	<!-- docx4j v3.3.6 addition  of c14 was done manually -->
 	
     <target name="oneoff-create-tree" >
 
